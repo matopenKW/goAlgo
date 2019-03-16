@@ -1,5 +1,4 @@
 # goAlgo
-+ Studying Algorithm with golang
 #### Studying Algorithm with golang
 
 ### quicksort（クイックソート）
