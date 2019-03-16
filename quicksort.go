@@ -7,35 +7,36 @@ func inputData() []int {
 }
 
 func main() {
-	var list = inputData()
-	list = quickSort(list)
-	print(list)
+
+	list := []int{4, 3, 7, 5, 3, 5, 6, 6, 4, 3}
+	fmt.Println(list, "→", sort(list))
+
 }
 
-func quickSort(list []int) []int {
-	after := []int{}
-	sort(&list, 0, len(list))
-	return after
-}
+func sort(list []int) (ret []int) {
 
-func sort(list *[]int, fir, end int) {
-	if fir == end {
-		return
+	if len(list) < 2 {
+		return list
 	}
-	p := pivot(list, fir, end)
-	fmt.Print(p)
-}
 
-func pivot(list *[]int, fir, end int) int {
-	k := fir + 1
-	for k <= end {
-		k++
-	}
-	return fir
-}
+	pivot := list[0]
 
-func print(list []int) {
-	for i, num := range list {
-		fmt.Printf("%d: %v\n", i, num)
+	low := []int{}
+	high := []int{}
+
+	for _, v := range list[1:] {
+		if v > pivot {
+			high = append(high, v)
+		} else {
+			low = append(low, v)
+		}
 	}
+
+	low = sort(low)
+	high = sort(high)
+
+	ret = append(low, pivot)
+	ret = append(ret, high...)
+	return ret
+
 }
