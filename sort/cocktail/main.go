@@ -43,7 +43,7 @@ func cocktailSort(numbers []int) []int {
 }
 
 func main() {
-	// 0~999までのランダムな数値を10桁まで生成
+	// 0~999までのランダムな数値を10個生成
 	nums := rand.Perm(1000)[:10]
 
 	fmt.Println(cocktailSort(nums))
