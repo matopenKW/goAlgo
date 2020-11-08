@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func cocktailSort(numbers []int) []int {
@@ -44,6 +45,7 @@ func cocktailSort(numbers []int) []int {
 
 func main() {
 	// 0~999までのランダムな数値を10個生成
+	rand.Seed(time.Now().UnixNano())
 	nums := rand.Perm(1000)[:10]
 
 	fmt.Println(cocktailSort(nums))

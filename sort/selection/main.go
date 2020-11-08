@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func selectionSort(numbers []int) []int {
@@ -21,9 +22,9 @@ func selectionSort(numbers []int) []int {
 
 func main() {
 	// 0~999までのランダムな数値を生成
+	rand.Seed(time.Now().UnixNano())
 	nums := rand.Perm(1000)[:10]
 
 	fmt.Println(selectionSort(nums))
-	fmt.Println(selectionSort([]int{2, 1, 13, 4, 56, 33, 7}))
 
 }
