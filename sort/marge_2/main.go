@@ -17,7 +17,7 @@ func margeSort(numbers []int) []int {
 	chRight := make(chan []int)
 
 	go func() { chLeft <- margeSort(numbers[:center]) }()
-	go func() { chRight <- margeSort(numbers[:center]) }()
+	go func() { chRight <- margeSort(numbers[center:]) }()
 
 	left := <-chLeft
 	right := <-chRight
@@ -50,12 +50,15 @@ func margeSort(numbers []int) []int {
 
 func main() {
 	start := time.Now().UnixNano()
-	fmt.Println("start ")
+	fmt.Println("start: ", start)
 
 	// 0~999までのランダムな数値を生成
 	rand.Seed(time.Now().UnixNano())
-	nums := rand.Perm(10000)
+	nums := rand.Perm(1000000)
 
-	fmt.Println(margeSort(nums)[20])
+	fmt.Println(margeSort(nums)[:20])
 
+	end := time.Now().UnixNano()
+	fmt.Println("end  : ", end)
+	fmt.Println("nano : ", end-start)
 }
