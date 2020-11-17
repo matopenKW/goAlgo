@@ -44,10 +44,8 @@ func margeSort(numbers []int) []int {
 func main() {
 	// 0~999までのランダムな数値を生成
 	rand.Seed(time.Now().UnixNano())
-	nums := rand.Perm(1000)[:10]
+	nums := rand.Perm(1000)[:20]
 
-	//fmt.Println(margeSort(nums))
-	fmt.Println(nums)
-	fmt.Println(margeSort([]int{5, 4, 1, 8, 7, 3, 2, 9}))
+	fmt.Println(margeSort(nums))
 
 }
